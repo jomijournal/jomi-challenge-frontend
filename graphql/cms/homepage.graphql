@@ -1,0 +1,23 @@
+# Write your query or mutation here
+query HomePage {
+  homePage {
+    data {
+      attributes {
+        sections {
+          ... on ComponentCommonHeader {
+            id
+            # TODO: Complete this query
+          }
+          ... on ComponentCommonCarousel {
+            id
+            # TODO: Complete this query
+          }
+          ... on ComponentCommonTwoColumnBlock {
+            id
+            # TODO: Complete this query
+          }
+        }
+      }
+    }
+  }
+}
