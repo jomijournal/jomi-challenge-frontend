@@ -30,7 +30,7 @@ const Home: NextPage = () => {
             Please follow the instructions on
             <a href="https://github.com/jomijournal/jomi-cms-challenge-backend">
               https://github.com/jomijournal/jomi-cms-challenge-backend
-            </a>
+            </a>{" "}
             to complete the challenge
           </Typography>
         </Box>
