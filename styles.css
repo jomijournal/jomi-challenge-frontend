@@ -1,0 +1,65 @@
+body {
+    background-color: #ffffff;
+    height          : max-content;
+    min-height      : 100vh;
+    font-family     : 'Open Sans', sans-serif;
+}
+
+.header {
+    width          : 100%;
+    display        : flex;
+    justify-content: center;
+    align-items    : center;
+    color          : black;
+    font-size      : 25px;
+    height         : 100px;
+}
+
+.componentCommonTwoColumnBlock {
+    display        : flex;
+    justify-content: center;
+    align-items    : center;
+    min-height     : 400px;
+}
+
+.ColumnBlock {
+    width  : 40%;
+    padding: 5% 5% !important;
+}
+
+.ColumnBlock p {
+    font-size: 20px;
+    padding  : 10% 0;
+}
+
+.ColumnBlock h2 {
+    font-size: 22px;
+}
+
+.learnMore {
+    background: transparent;
+    border    : 1px solid blue;
+    color     : blue;
+    font-size : 18px;
+    padding   : 7px;
+    width     : 140px;
+}
+
+.sliderbg {
+    background-color   : #0D1117;
+    /* height          : 120px; */
+    padding-bottom     : 20px;
+}
+
+.sliderbg p {
+    color  : #ffffff;
+    padding: 15px 0;
+}
+
+.image {
+    padding: 0 15px;
+}
+
+.line {
+    border: 1px solid #0D1117;
+}
