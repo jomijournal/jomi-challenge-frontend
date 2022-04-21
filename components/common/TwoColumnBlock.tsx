@@ -11,11 +11,7 @@ const TwoColumnBlock = (props: ComponentCommonTwoColumnBlock) => {
               <Box
                 component="img"
                 sx={{
-                  height: { md: 250 },
-                  width: {
-                    xs: "100%",
-                    md: 350,
-                  },
+                  width: "100%"
                 }}
                 alt="The house from the offer."
                 src={`${API_URL}${props.Image.data.attributes.url}`}
@@ -38,12 +34,7 @@ const TwoColumnBlock = (props: ComponentCommonTwoColumnBlock) => {
               <Box
                 component="img"
                 sx={{
-                  height: { md: 250 },
-                  width: {
-                    xs: "100%",
-                    md: 350,
-                  },
-                  /*  */
+                  width:"100%"
                 }}
                 alt="The house from the offer."
                 src={`${API_URL}${props.Image.data.attributes.url}`}
