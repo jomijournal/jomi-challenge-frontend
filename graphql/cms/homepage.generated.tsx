@@ -10,19 +10,59 @@ export type HomePageQuery = { __typename?: 'Query', homePage?: { __typename?: 'H
 
 
 export const HomePageDocument = gql`
-    query HomePage {
+query HomePage {
   homePage {
     data {
       attributes {
         sections {
           ... on ComponentCommonHeader {
             id
+            Text
+            ButtonText
+            ButtonLink
+            # TODO: Complete this query
           }
           ... on ComponentCommonCarousel {
             id
+            Item {
+              TitleText
+              Description
+              ButtonUrl
+              ButtonText
+              ImagePosition
+              Image {
+                data {
+                  attributes {
+                    name
+                    height
+                    width
+                    url
+                    size
+                  }
+                }
+              }
+            }
+            # TODO: Complete this query
           }
           ... on ComponentCommonTwoColumnBlock {
             id
+            TitleText
+            Description
+            ButtonText
+            ButtonUrl
+            ImagePosition
+            Image {
+              data {
+                attributes {
+                  name
+                  height
+                  width
+                  url
+                  size
+                }
+              }
+            }
+            # TODO: Complete this query
           }
         }
       }
@@ -47,13 +87,13 @@ export const HomePageDocument = gql`
  * });
  */
 export function useHomePageQuery(baseOptions?: Apollo.QueryHookOptions<HomePageQuery, HomePageQueryVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<HomePageQuery, HomePageQueryVariables>(HomePageDocument, options);
-      }
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useQuery<HomePageQuery, HomePageQueryVariables>(HomePageDocument, options);
+}
 export function useHomePageLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<HomePageQuery, HomePageQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<HomePageQuery, HomePageQueryVariables>(HomePageDocument, options);
-        }
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useLazyQuery<HomePageQuery, HomePageQueryVariables>(HomePageDocument, options);
+}
 export type HomePageQueryHookResult = ReturnType<typeof useHomePageQuery>;
 export type HomePageLazyQueryHookResult = ReturnType<typeof useHomePageLazyQuery>;
 export type HomePageQueryResult = Apollo.QueryResult<HomePageQuery, HomePageQueryVariables>;
