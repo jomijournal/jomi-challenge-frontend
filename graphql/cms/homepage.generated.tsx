@@ -3,33 +3,77 @@ import * as Types from '../types';
 import { gql } from '@apollo/client';
 import * as Apollo from '@apollo/client';
 const defaultOptions = {} as const;
-export type HomePageQueryVariables = Types.Exact<{ [key: string]: never; }>;
+export type HomePageQueryVariables = Types.Exact<{ [key: string]: never }>;
 
-
-export type HomePageQuery = { __typename?: 'Query', homePage?: { __typename?: 'HomePageEntityResponse', data?: { __typename?: 'HomePageEntity', attributes?: { __typename?: 'HomePage', sections?: Array<{ __typename?: 'ComponentCommonCarousel', id: string } | { __typename?: 'ComponentCommonHeader', id: string } | { __typename?: 'ComponentCommonTwoColumnBlock', id: string } | { __typename?: 'Error' } | null> | null } | null } | null } | null };
-
+export type HomePageQuery = {
+  __typename?: 'Query';
+  homePage?: {
+    __typename?: 'HomePageEntityResponse';
+    data?: {
+      __typename?: 'HomePageEntity';
+      attributes?: {
+        __typename?: 'HomePage';
+        sections?: Array<
+          | { __typename?: 'ComponentCommonCarousel'; id: string }
+          | { __typename?: 'ComponentCommonHeader'; id: string }
+          | { __typename?: 'ComponentCommonTwoColumnBlock'; id: string }
+          | { __typename?: 'Error' }
+          | null
+        > | null;
+      } | null;
+    } | null;
+  } | null;
+};
 
 export const HomePageDocument = gql`
-    query HomePage {
-  homePage {
-    data {
-      attributes {
-        sections {
-          ... on ComponentCommonHeader {
-            id
-          }
-          ... on ComponentCommonCarousel {
-            id
-          }
-          ... on ComponentCommonTwoColumnBlock {
-            id
+  query HomePage {
+    homePage {
+      data {
+        attributes {
+          sections {
+            ... on ComponentCommonHeader {
+              id
+              Text
+            }
+            ... on ComponentCommonCarousel {
+              id
+              Item {
+                TitleText
+                Image {
+                  data {
+                    attributes {
+                      name
+                      url
+                      previewUrl
+                    }
+                  }
+                }
+              }
+            }
+            ... on ComponentCommonTwoColumnBlock {
+              id
+              TitleText
+              Description
+              ButtonText
+              ButtonUrl
+              ImagePosition
+              Image {
+                __typename
+                data {
+                  attributes {
+                    name
+                    url
+                    previewUrl
+                  }
+                }
+              }
+            }
           }
         }
       }
     }
   }
-}
-    `;
+`;
 
 /**
  * __useHomePageQuery__
@@ -46,14 +90,32 @@ export const HomePageDocument = gql`
  *   },
  * });
  */
-export function useHomePageQuery(baseOptions?: Apollo.QueryHookOptions<HomePageQuery, HomePageQueryVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<HomePageQuery, HomePageQueryVariables>(HomePageDocument, options);
-      }
-export function useHomePageLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<HomePageQuery, HomePageQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<HomePageQuery, HomePageQueryVariables>(HomePageDocument, options);
-        }
+export function useHomePageQuery(
+  baseOptions?: Apollo.QueryHookOptions<HomePageQuery, HomePageQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<HomePageQuery, HomePageQueryVariables>(
+    HomePageDocument,
+    options
+  );
+}
+export function useHomePageLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    HomePageQuery,
+    HomePageQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<HomePageQuery, HomePageQueryVariables>(
+    HomePageDocument,
+    options
+  );
+}
 export type HomePageQueryHookResult = ReturnType<typeof useHomePageQuery>;
-export type HomePageLazyQueryHookResult = ReturnType<typeof useHomePageLazyQuery>;
-export type HomePageQueryResult = Apollo.QueryResult<HomePageQuery, HomePageQueryVariables>;
+export type HomePageLazyQueryHookResult = ReturnType<
+  typeof useHomePageLazyQuery
+>;
+export type HomePageQueryResult = Apollo.QueryResult<
+  HomePageQuery,
+  HomePageQueryVariables
+>;
