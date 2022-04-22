@@ -2,25 +2,35 @@ import {
   ApolloClient,
   ApolloLink,
   HttpLink,
+  createHttpLink,
   InMemoryCache,
   NormalizedCacheObject,
 } from "@apollo/client";
 import { useMemo } from "react";
 import merge from "deepmerge";
 import isEqual from "lodash/isEqual";
+import { setContext } from '@apollo/client/link/context';
 
 let apolloClient: ApolloClient<NormalizedCacheObject> | undefined;
 export const APOLLO_STRAPI_STATE_PROP_NAME = "__APOLLO_STRAPI__";
 
-const httpLink = new HttpLink({
-  uri: process.env.STRAPI_URL,
-  credentials: "include",
+const httpLink = createHttpLink({
+  uri: "http://localhost:1337/graphql",
+});
+
+const authLink = setContext((_, { headers }) => {
+  return {
+    headers: {
+      ...headers,
+      Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjUwNjE3MjE1LCJleHAiOjE2NTMyMDkyMTV9.sCGxnwHrnLSKjrKn5wIwXPGlS1Q54JMkjnsVWIMt1Fc`
+    }
+  }
 });
 
 function createApolloClient() {
   return new ApolloClient({
     ssrMode: typeof window === "undefined",
-    link: ApolloLink.from([httpLink]),
+    link: authLink.concat(httpLink),
     cache: new InMemoryCache({}),
   });
 }
