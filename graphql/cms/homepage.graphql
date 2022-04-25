@@ -6,18 +6,25 @@ query HomePage {
         sections {
           ... on ComponentCommonHeader {
             id
-            # TODO: Complete this query
+            Text
+            ButtonText
+            ButtonLink
           }
           ... on ComponentCommonCarousel {
             id
-            # TODO: Complete this query
+            # Item
           }
           ... on ComponentCommonTwoColumnBlock {
             id
-            # TODO: Complete this query
+            # individualSubscription
+            Description
+            Click
+            ButtonUrl
+            ImagePosition
           }
         }
       }
     }
   }
 }
+

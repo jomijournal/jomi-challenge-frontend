@@ -10,19 +10,38 @@ export type HomePageQuery = { __typename?: 'Query', homePage?: { __typename?: 'H
 
 
 export const HomePageDocument = gql`
-    query HomePage {
+query HomePage {
   homePage {
     data {
       attributes {
         sections {
           ... on ComponentCommonHeader {
             id
+            Text
+            ButtonText
+            ButtonLink
           }
           ... on ComponentCommonCarousel {
             id
+            Item {
+              Image {
+                data {
+                  attributes {
+                    url
+                  }
+                }
+              }
+            }
           }
           ... on ComponentCommonTwoColumnBlock {
             id
+            Title
+            # individualSubscription
+            Description
+            Click
+            ButtonUrl
+            ImagePosition
+            # Image
           }
         }
       }

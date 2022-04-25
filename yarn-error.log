@@ -1,0 +1,75 @@
+Arguments: 
+  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js install
+
+PATH: 
+  C:\Program Files\PowerShell\7;C:\Python39\Scripts\;C:\Python39\;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files\Common Files\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files\Microsoft SQL Server\130\Tools\Binn\;C:\Program Files\Git\cmd;C:\Program Files\Git\bin;C:\ProgramData\chocolatey\bin;C:\Program Files\OpenJDK\openjdk-8u262-b10\bin;C:\Users\theonetech151\AppData\Local\Android\Sdk\platform-tools;C:\Program Files\PuTTY\;C:\Program Files (x86)\Yarn\bin\;C:\Program Files\dotnet\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\;C:\Program Files\Microsoft\Web Platform Installer\;C:\Program Files\PowerShell\7\;C:\Program Files\OpenSSH\;C:\Program Files\Go\bin;C:\WINDOWS\System32\OpenSSH\;C:\Python27;C:\Program Files\nodejs\;C:\Users\theonetech151\AppData\Local\Microsoft\WindowsApps;C:\Users\theonetech151\AppData\Local\GitHubDesktop\bin;C:\Users\theonetech151\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\theonetech151\AppData\Local\Yarn\bin;C:\Program Files\heroku\bin;C:\Users\theonetech151\go\bin;C:\Users\theonetech151\AppData\Local\Microsoft\WindowsApps;C:\Users\theonetech151\AppData\Roaming\npm
+
+Yarn version: 
+  1.22.5
+
+Node version: 
+  14.17.1
+
+Platform: 
+  win32 x64
+
+Trace: 
+  Error: ENOSPC: no space left on device, write
+
+npm manifest: 
+  {
+    "name": "expense-book-water",
+    "version": "0.1.0",
+    "private": true,
+    "scripts": {
+      "dev": "next dev -p 3000",
+      "build": "next build",
+      "start": "next start",
+      "lint": "next lint",
+      "gen": "graphql-codegen --config graphql.config.yml"
+    },
+    "dependencies": {
+      "@apollo/client": "^3.5.10",
+      "@emotion/react": "^11.8.2",
+      "@emotion/styled": "^11.8.1",
+      "@graphql-codegen/cli": "^2.6.2",
+      "@graphql-codegen/near-operation-file-preset": "^2.2.9",
+      "@mui/icons-material": "^5.5.1",
+      "@mui/lab": "^5.0.0-alpha.73",
+      "@mui/material": "^5.5.1",
+      "@svgr/webpack": "^6.2.1",
+      "antd": "^4.19.5",
+      "axios": "^0.26.1",
+      "cookies": "^0.8.0",
+      "eject": "^0.0.4",
+      "formik": "^2.2.9",
+      "graphql": "15.x",
+      "jquery": "^3.6.0",
+      "jsonwebtoken": "^8.5.1",
+      "next": "12.1.0",
+      "react": "17.0.2",
+      "react-dom": "17.0.2",
+      "react-owl-carousel": "^2.3.3",
+      "react-owl-carousel2": "^0.3.0",
+      "react-scripts": "^5.0.1",
+      "webpack": "^5.72.0",
+      "yup": "^0.32.11"
+    },
+    "devDependencies": {
+      "@graphql-codegen/cli": "2.6.2",
+      "@graphql-codegen/typescript": "2.4.8",
+      "@graphql-codegen/typescript-operations": "2.3.5",
+      "@graphql-codegen/typescript-react-apollo": "3.2.11",
+      "@types/node": "17.0.21",
+      "@types/react": "17.0.41",
+      "eslint": "8.11.0",
+      "eslint-config-next": "12.1.0",
+      "typescript": "4.6.2"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile

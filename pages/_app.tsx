@@ -1,6 +1,8 @@
 import type { AppProps } from "next/app";
 import { createTheme, CssBaseline, ThemeProvider } from "@mui/material";
 import MyApolloProvider from "lib/apollo/ApolloProvider";
+import '../css/bootstrap-grid.css'
+import '../css/style.css'
 const theme = createTheme();
 function MyApp({ Component, pageProps }: AppProps) {
   return (

@@ -1,5 +1,5 @@
 // import { NextLink } from "components/common/NextLink";
-import { Box, Container, Typography } from "@mui/material";
+import HomePageSections from "components/HomePageSections";
 import {
   HomePageDocument,
   HomePageQuery,
@@ -11,32 +11,39 @@ import {
   initializeStrapiApollo,
 } from "lib/apollo/cms-client";
 import type { GetStaticProps, NextPage } from "next";
-import Head from "next/head";
+import 'antd/dist/antd.css';
+// import '../components/common/style.css'
+// import $ from 'jquery'
+
 
 const Home: NextPage = () => {
   const { data } = useHomePageQuery();
 
+  var groupBy = function (data, key) {
+    if (data.homePage.data.attributes.sections) {
+      return data.homePage.data.attributes.sections.reduce(function (rv, x) {
+        (rv[x[key]] = rv[x[key]] || []).push(x);
+        return rv;
+      }, {});
+    }
+  };
+
   return (
     <>
-      <Head>
-        <title>JOMI Code Challenge</title>
-        <meta name="description" content="Manage your expenses" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-      <Container>
-        <Box my={2}>
-          <Typography variant="h4">Welcome to JOMI Code Challenge</Typography>
-          <Typography>
-            Please follow the instructions on
-            <a href="https://github.com/jomijournal/jomi-cms-challenge-backend">
-              https://github.com/jomijournal/jomi-cms-challenge-backend
-            </a>{" "}
-            to complete the challenge
-          </Typography>
-        </Box>
+      {/* Load jQuery(1.7+) */}
+      <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
 
-        <Box>{/* TODO: Render components from useHomePageQury here  */}</Box>
-      </Container>
+      {/* <!-- Customized Style --> */}
+      <link rel="stylesheet" href="owl-carousel/owl.theme.css"></link>
+      {
+        <HomePageSections data={{
+          __typename: groupBy(data, '__typename'),
+          id: ""
+        }} />
+        // )
+        // )
+      }
+
     </>
   );
 };
