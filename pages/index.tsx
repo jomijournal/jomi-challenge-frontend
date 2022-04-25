@@ -25,7 +25,7 @@ const Home: NextPage = () => {
       </Head>
       <Container>
         <Box my={2}>
-          <Typography variant="h4">Welcome to JOMI Code Challenge</Typography>
+          <Typography variant="h4">Welcome to JOMI Code Challenge Rietsh rana</Typography>
           <Typography>
             Please follow the instructions on
             <a href="https://github.com/jomijournal/jomi-cms-challenge-backend">
