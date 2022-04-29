@@ -1,5 +1,6 @@
 // import { NextLink } from "components/common/NextLink";
 import { Box, Container, Typography } from "@mui/material";
+import React, { useState, useEffect } from 'react';
 import {
   HomePageDocument,
   HomePageQuery,
@@ -12,9 +13,11 @@ import {
 } from "lib/apollo/cms-client";
 import type { GetStaticProps, NextPage } from "next";
 import Head from "next/head";
+import HomePageSections from "../components/HomePageSections";
 
 const Home: NextPage = () => {
   const { data } = useHomePageQuery();
+  const sections = data.homePage.data.attributes.sections;
 
   return (
     <>
@@ -23,20 +26,14 @@ const Home: NextPage = () => {
         <meta name="description" content="Manage your expenses" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Container>
-        <Box my={2}>
-          <Typography variant="h4">Welcome to JOMI Code Challenge</Typography>
-          <Typography>
-            Please follow the instructions on
-            <a href="https://github.com/jomijournal/jomi-cms-challenge-backend">
-              https://github.com/jomijournal/jomi-cms-challenge-backend
-            </a>{" "}
-            to complete the challenge
-          </Typography>
-        </Box>
-
-        <Box>{/* TODO: Render components from useHomePageQury here  */}</Box>
-      </Container>
+      {/* <Container>
+        <Box> */}
+          {/* TODO: Render components from useHomePageQury here  */}
+          {sections.map((singleSection, index) => (
+            <HomePageSections data={singleSection} />
+          ))}
+        {/* </Box>
+      </Container> */}
     </>
   );
 };
@@ -55,3 +52,5 @@ export const getStaticProps: GetStaticProps = async () => {
     },
   };
 };
+
+

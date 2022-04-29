@@ -1,4 +1,5 @@
 /** @type {import('next').NextConfig} */
+const webpack = require("webpack");
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
@@ -9,11 +10,18 @@ const nextConfig = {
   images: {
     domains: ["localhost", process.env.STRAPI_CMS_URL],
   },
-  webpack(config) {
+  webpack(config, { buildId, dev, isServer, defaultLoaders, webpack }) {
     config.module.rules.push({
       test: /\.svg$/,
       use: ["@svgr/webpack"],
     });
+    config.plugins.push(
+      new webpack.ProvidePlugin({
+        $: "jquery",
+        jQuery: "jquery",
+        "window.jQuery": "jquery",
+      })
+    );
 
     return config;
   },
