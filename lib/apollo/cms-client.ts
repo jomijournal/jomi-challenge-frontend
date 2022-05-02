@@ -12,9 +12,9 @@ import isEqual from "lodash/isEqual";
 let apolloClient: ApolloClient<NormalizedCacheObject> | undefined;
 export const APOLLO_STRAPI_STATE_PROP_NAME = "__APOLLO_STRAPI__";
 
+//Fix cors error when sending request to graphql 
 const httpLink = new HttpLink({
   uri: process.env.STRAPI_URL,
-  credentials: "include",
 });
 
 function createApolloClient() {

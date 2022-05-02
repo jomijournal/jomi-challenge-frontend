@@ -43,11 +43,9 @@ const Home: NextPage = () => {
 
 export default Home;
 
+// Fix graphql ECONREFUSED 
 export const getStaticProps: GetStaticProps = async () => {
   const client = await initializeStrapiApollo();
-  await client.query<HomePageQuery>({
-    query: HomePageDocument,
-  });
 
   return {
     props: {
