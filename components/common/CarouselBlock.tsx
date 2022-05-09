@@ -12,12 +12,12 @@ type Props = {
   data: ComponentCommonCarousel;
 };
 
-const CarouselBlock = ({data}: Props) => {
+const CarouselBlock = ({ data }: Props) => {
   const [displaySlider, setdisplaySlider] = useState(false);
-  
+
   useEffect(() => {
     setdisplaySlider(true);
-  },[]);
+  }, []);
 
   //TODO : Complete this component
   return <>
@@ -29,25 +29,25 @@ const CarouselBlock = ({data}: Props) => {
           </div>
           <div className="f-heading carousel-div">
             {/* start carousel code */}
-            {displaySlider ? <OwlCarousel items={4}  
-                className="owl-theme"  
-                loop
-                nav  
-                margin={8}
-                 autoplayTimeout={2000} autoplaySpeed={2000} autoplayHoverPause={false} >  
-                 {data.Item.map((item, index) => (
-                  <div className="item">
-                    <div className="logo-box">
-                      <img src={`${process.env.STRAPI_CMS_URL}`+item.Image.data.attributes.url} alt="" />
-                    </div>
-                  </div>  
-                 ))} 
+            {displaySlider ? <OwlCarousel items={4}
+              className="owl-theme"
+              loop
+              nav
+              margin={8}
+              autoplayTimeout={2000} autoplaySpeed={2000} autoplayHoverPause={false} >
+              {data.Item.map((item, index) => (
+                <div className="item">
+                  <div className="logo-box">
+                    <img src={`${process.env.STRAPI_CMS_URL}` + item.Image.data.attributes.url} alt="" />
+                  </div>
+                </div>
+              ))}
             </OwlCarousel> : ''}
             {/* end carousel code */}
           </div>
         </div>
       </Container>
-      </section>
+    </section>
   </>;
 };
 

@@ -8,17 +8,17 @@ type Props = {
 const HeaderBlock = ({ data }: Props) => {
   //TODO: Complete this component
   return <>
-  <Container>
-    <Box>
-      {/* Start Header block */}
-      <header>
+    <Container>
+      <Box>
+        {/* Start Header block */}
+        <header>
           <div className="header-heading">
-              <a href="#">{data.Text}</a>
+            <a href="#">{data.Text}</a>
           </div>
-      </header> 
-      {/* End Header block */}
-    </Box>
-  </Container>    
+        </header>
+        {/* End Header block */}
+      </Box>
+    </Container>
   </>;
 };
 

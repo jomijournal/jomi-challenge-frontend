@@ -28,11 +28,11 @@ const Home: NextPage = () => {
       </Head>
       {/* <Container>
         <Box> */}
-          {/* TODO: Render components from useHomePageQury here  */}
-          {sections.map((singleSection, index) => (
-            <HomePageSections data={singleSection} />
-          ))}
-        {/* </Box>
+      {/* TODO: Render components from useHomePageQury here  */}
+      {sections.map((singleSection, index) => (
+        <HomePageSections data={singleSection} />
+      ))}
+      {/* </Box>
       </Container> */}
     </>
   );
@@ -52,5 +52,3 @@ export const getStaticProps: GetStaticProps = async () => {
     },
   };
 };
-
-

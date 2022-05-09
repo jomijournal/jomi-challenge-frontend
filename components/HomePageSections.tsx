@@ -25,7 +25,7 @@ const HomePageSections = ({ data }: Props) => {
       //@ts-ignore
       return <TwoColumnBlock data={data} />;
     case "ComponentCommonCarousel":
-      return <CarouselBlock data={data} />;  
+      return <CarouselBlock data={data} />;
   }
 };
 
