@@ -4,17 +4,50 @@ query HomePage {
     data {
       attributes {
         sections {
+          __typename
           ... on ComponentCommonHeader {
             id
-            # TODO: Complete this query
-          }
-          ... on ComponentCommonCarousel {
-            id
-            # TODO: Complete this query
+            Text
+            ButtonText
+            ButtonLink
           }
           ... on ComponentCommonTwoColumnBlock {
             id
-            # TODO: Complete this query
+            TitleText
+            Description
+            ButtonText
+            ButtonUrl
+            ImagePosition
+            Image {
+              data {
+                id
+                attributes {
+                  previewUrl
+                  url
+                }
+              }
+              __typename
+            }
+          }
+          ... on ComponentCommonCarousel {
+            id
+
+            Item {
+              id
+              TitleText
+              Description
+              ButtonText
+              ButtonUrl
+              ImagePosition
+              Image {
+                data {
+                  attributes {
+                    previewUrl
+                    url
+                  }
+                }
+              }
+            }
           }
         }
       }
