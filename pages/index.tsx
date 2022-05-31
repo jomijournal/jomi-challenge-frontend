@@ -5,7 +5,7 @@ import {
   HomePageQuery,
   useHomePageQuery,
 } from "graphql/cms/homepage.generated";
-
+import HomePageSections from "components/HomePageSections";
 import {
   APOLLO_STRAPI_STATE_PROP_NAME,
   initializeStrapiApollo,
@@ -24,8 +24,8 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Container>
-        <Box my={2}>
-          <Typography variant="h4">Welcome to JOMI Code Challenge</Typography>
+        {/* <Box my={2}>
+          <Typography variant="h4">Welcome to JOMI Code Challenge..</Typography>
           <Typography>
             Please follow the instructions on
             <a href="https://github.com/jomijournal/jomi-cms-challenge-backend">
@@ -33,9 +33,15 @@ const Home: NextPage = () => {
             </a>{" "}
             to complete the challenge
           </Typography>
-        </Box>
+        </Box> */}
 
-        <Box>{/* TODO: Render components from useHomePageQury here  */}</Box>
+        <Box>{/* TODO: Render components from useHomePageQury here  */}
+        {data && data?.homePage?.data?.attributes?.sections.length > 0 ? 
+        data?.homePage?.data?.attributes?.sections.map((section, i)=>{
+          return <HomePageSections key={`sections_${i}`} data={section} /> 
+        })
+        : null}
+        </Box>
       </Container>
     </>
   );

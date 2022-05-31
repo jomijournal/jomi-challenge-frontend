@@ -18,6 +18,7 @@ export type Scalars = {
 
 export type ComponentCommonCarousel = {
   __typename?: 'ComponentCommonCarousel';
+  HeaderText?: Maybe<Scalars['String']>;
   Item?: Maybe<Array<Maybe<ComponentCommonTwoColumnBlock>>>;
   id: Scalars['ID'];
 };
@@ -32,6 +33,7 @@ export type ComponentCommonHeader = {
   ButtonLink?: Maybe<Scalars['String']>;
   ButtonText?: Maybe<Scalars['String']>;
   Text?: Maybe<Scalars['String']>;
+  Text_2?: Maybe<Scalars['String']>;
   id: Scalars['ID'];
 };
 
