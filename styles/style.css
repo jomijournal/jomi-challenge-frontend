@@ -1,0 +1,22 @@
+.slick-slider .slick-arrow::before {
+  display: none;
+}
+
+.slick-slider .slick-arrow {
+  stroke: white;
+  stroke-width: 3px;
+  fill: transparent;
+  margin: 0 -20px;
+}
+
+.slick-slider .slick-arrow:hover {
+  fill: white;
+}
+
+.slick-slider .slick-arrow.slick-next {
+  transform: rotate(180deg) translate(0,50%);
+}
+
+.slick-slider .slick-active {
+  padding: 0 10px;
+}

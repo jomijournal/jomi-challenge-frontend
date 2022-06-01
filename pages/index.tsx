@@ -1,5 +1,7 @@
 // import { NextLink } from "components/common/NextLink";
-import { Box, Container, Typography } from "@mui/material";
+import { useState } from "react";
+import { Box, Container, Stack, Typography } from "@mui/material";
+import HomePageSections from "components/HomePageSections";
 import {
   HomePageDocument,
   HomePageQuery,
@@ -15,6 +17,16 @@ import Head from "next/head";
 
 const Home: NextPage = () => {
   const { data } = useHomePageQuery();
+
+  const sections: object[] = data.homePage.data.attributes.sections;
+
+  const firstTwoColumnBlock: any = sections
+    .filter(
+      ({ __typename }: any) => __typename === "ComponentCommonTwoColumnBlock"
+    )
+    .sort((a: any, b: any) => a.id - b.id)
+    .shift();
+  const firstId = firstTwoColumnBlock.id;
 
   return (
     <>
@@ -35,7 +47,22 @@ const Home: NextPage = () => {
           </Typography>
         </Box>
 
-        <Box>{/* TODO: Render components from useHomePageQury here  */}</Box>
+        <Box>
+          <Container maxWidth={"lg"}>
+            <Stack>
+              {sections.map((section: any) => {
+                const isFirst = section.id === firstId;
+                return (
+                  <HomePageSections
+                    key={section.id}
+                    data={section}
+                    first={isFirst}
+                  />
+                );
+              })}
+            </Stack>
+          </Container>
+        </Box>
       </Container>
     </>
   );
