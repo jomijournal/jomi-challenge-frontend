@@ -13,8 +13,7 @@ let apolloClient: ApolloClient<NormalizedCacheObject> | undefined;
 export const APOLLO_STRAPI_STATE_PROP_NAME = "__APOLLO_STRAPI__";
 
 const httpLink = new HttpLink({
-  uri: process.env.STRAPI_URL,
-  credentials: "include",
+  uri: process.env.NEXT_PUBLIC_STRAPI_URL,
 });
 
 function createApolloClient() {
