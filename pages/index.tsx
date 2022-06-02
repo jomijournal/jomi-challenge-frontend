@@ -5,6 +5,7 @@ import {
   HomePageQuery,
   useHomePageQuery,
 } from "graphql/cms/homepage.generated";
+import HomePageSections from "components/HomePageSections";
 
 import {
   APOLLO_STRAPI_STATE_PROP_NAME,
@@ -24,7 +25,7 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Container>
-        <Box my={2}>
+        {/* <Box my={2}>
           <Typography variant="h4">Welcome to JOMI Code Challenge</Typography>
           <Typography>
             Please follow the instructions on
@@ -33,9 +34,18 @@ const Home: NextPage = () => {
             </a>{" "}
             to complete the challenge
           </Typography>
+        </Box> */}
+
+        {/* TODO: Render components from useHomePageQury here  */}
+
+        <Box>
+          {
+            data?.homePage?.data?.attributes?.sections?.map((section, index) => (
+              <HomePageSections key={index?.toString()} data={section} />
+            ))
+          }
         </Box>
 
-        <Box>{/* TODO: Render components from useHomePageQury here  */}</Box>
       </Container>
     </>
   );
