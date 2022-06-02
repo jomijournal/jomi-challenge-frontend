@@ -7,14 +7,50 @@ query HomePage {
           ... on ComponentCommonHeader {
             id
             # TODO: Complete this query
+            Text
           }
           ... on ComponentCommonCarousel {
             id
             # TODO: Complete this query
+            Item {
+              id
+              TitleText
+              Description
+              ButtonText
+              ButtonUrl
+              ImagePosition
+              Image {
+                data {
+                  id
+                  attributes {
+                    alternativeText
+                    url
+                    width
+                    height
+                  }
+                }
+              }
+            }
           }
           ... on ComponentCommonTwoColumnBlock {
             id
             # TODO: Complete this query
+            TitleText
+            Description
+            ButtonText
+            ButtonUrl
+            ImagePosition
+            Image {
+              data {
+                id
+                attributes {
+                  url
+                  width
+                  height
+                  alternativeText
+                }
+              }
+            }
           }
         }
       }
