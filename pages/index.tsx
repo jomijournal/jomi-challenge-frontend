@@ -12,6 +12,7 @@ import {
 } from "lib/apollo/cms-client";
 import type { GetStaticProps, NextPage } from "next";
 import Head from "next/head";
+import HomePageSections from "components/HomePageSections";
 
 const Home: NextPage = () => {
   const { data } = useHomePageQuery();
@@ -35,7 +36,9 @@ const Home: NextPage = () => {
           </Typography>
         </Box>
 
-        <Box>{/* TODO: Render components from useHomePageQury here  */}</Box>
+        <Box>
+          {data["homePage"]["data"]["attributes"]["sections"].map((sectionData, index) => <HomePageSections key={index} data={sectionData} />)}
+        </Box>
       </Container>
     </>
   );

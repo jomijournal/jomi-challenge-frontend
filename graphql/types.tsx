@@ -27,6 +27,12 @@ export type ComponentCommonCarouselItemArgs = {
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 
+export type ComponentCommonGenk = {
+  __typename?: 'ComponentCommonGenk';
+  id: Scalars['ID'];
+  text?: Maybe<Scalars['String']>;
+};
+
 export type ComponentCommonHeader = {
   __typename?: 'ComponentCommonHeader';
   ButtonLink?: Maybe<Scalars['String']>;
@@ -89,7 +95,7 @@ export type Error = {
   message?: Maybe<Scalars['String']>;
 };
 
-export type GenericMorph = ComponentCommonCarousel | ComponentCommonHeader | ComponentCommonTwoColumnBlock | ComponentHeroHeroSection | ContentPage | HomePage | I18NLocale | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser;
+export type GenericMorph = ComponentCommonCarousel | ComponentCommonGenk | ComponentCommonHeader | ComponentCommonTwoColumnBlock | ComponentHeroHeroSection | ContentPage | HomePage | I18NLocale | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser;
 
 export type HomePage = {
   __typename?: 'HomePage';
