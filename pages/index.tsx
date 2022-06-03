@@ -1,4 +1,7 @@
-// import { NextLink } from "components/common/NextLink";
+
+import type { GetStaticProps, NextPage } from "next";
+import Head from "next/head";
+
 import { Box, Container, Typography } from "@mui/material";
 import {
   HomePageDocument,
@@ -10,12 +13,11 @@ import {
   APOLLO_STRAPI_STATE_PROP_NAME,
   initializeStrapiApollo,
 } from "lib/apollo/cms-client";
-import type { GetStaticProps, NextPage } from "next";
-import Head from "next/head";
+
+import HomePageSections from '../components/HomePageSections';
 
 const Home: NextPage = () => {
   const { data } = useHomePageQuery();
-
   return (
     <>
       <Head>
@@ -35,7 +37,13 @@ const Home: NextPage = () => {
           </Typography>
         </Box>
 
-        <Box>{/* TODO: Render components from useHomePageQury here  */}</Box>
+        <Box>
+          {data.homePage.data.attributes.sections.map((item, index) => (
+            <div key={index}>
+              <HomePageSections data={item} />
+            </div>
+          ))}
+        </Box>
       </Container>
     </>
   );
