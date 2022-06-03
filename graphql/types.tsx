@@ -42,6 +42,8 @@ export type ComponentCommonTwoColumnBlock = {
   Description?: Maybe<Scalars['String']>;
   Image?: Maybe<UploadFileEntityResponse>;
   ImagePosition?: Maybe<Enum_Componentcommontwocolumnblock_Imageposition>;
+  SubDescription?: Maybe<Scalars['String']>;
+  SubTitle?: Maybe<Scalars['String']>;
   TitleText?: Maybe<Scalars['String']>;
   id: Scalars['ID'];
 };

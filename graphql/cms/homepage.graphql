@@ -5,16 +5,79 @@ query HomePage {
       attributes {
         sections {
           ... on ComponentCommonHeader {
-            id
+            id,
+            Text,
+            ButtonText,
+            ButtonLink
             # TODO: Complete this query
           }
           ... on ComponentCommonCarousel {
-            id
+            id,
+            Item {
+              ButtonText,
+              ButtonUrl,
+              Description,
+              Image {
+                data {
+                  id,
+                  attributes {
+                    height,
+                    name,
+                    url,
+                    width
+                  }
+                }
+              },
+              ImagePosition,
+              SubDescription,
+              SubTitle,
+              TitleText,
+              id
+            },
             # TODO: Complete this query
           }
           ... on ComponentCommonTwoColumnBlock {
-            id
+            id,
+            TitleText,
+            Description,
+            SubTitle,
+            SubDescription,
+            Image {
+              data {
+                id,
+                attributes {
+                  height,
+                  name,
+                  url,
+                  width
+                }
+              }
+            },
+            ImagePosition,
+            ButtonText,
+            ButtonUrl,
             # TODO: Complete this query
+          }
+          ... on ComponentCommonTwoColumnBlock {
+            id,
+            TitleText,
+            Description,
+            SubTitle,
+            SubDescription,
+            Image {
+              data {
+                id,
+                attributes {
+                  height,
+                  name,
+                  url,
+                  width,
+                }
+              }
+            },
+            ImagePosition,
+            ButtonText,
+            ButtonUrl,
           }
         }
       }

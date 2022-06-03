@@ -6,7 +6,7 @@ const defaultOptions = {} as const;
 export type HomePageQueryVariables = Types.Exact<{ [key: string]: never; }>;
 
 
-export type HomePageQuery = { __typename?: 'Query', homePage?: { __typename?: 'HomePageEntityResponse', data?: { __typename?: 'HomePageEntity', attributes?: { __typename?: 'HomePage', sections?: Array<{ __typename?: 'ComponentCommonCarousel', id: string } | { __typename?: 'ComponentCommonHeader', id: string } | { __typename?: 'ComponentCommonTwoColumnBlock', id: string } | { __typename?: 'Error' } | null> | null } | null } | null } | null };
+export type HomePageQuery = { __typename?: 'Query', homePage?: { __typename?: 'HomePageEntityResponse', data?: { __typename?: 'HomePageEntity', attributes?: { __typename?: 'HomePage', sections?: Array<{ __typename?: 'ComponentCommonCarousel', id: string, Item?: Array<{ __typename?: 'ComponentCommonTwoColumnBlock', ButtonText?: string | null, ButtonUrl?: string | null, Description?: string | null, ImagePosition?: Types.Enum_Componentcommontwocolumnblock_Imageposition | null, SubDescription?: string | null, SubTitle?: string | null, TitleText?: string | null, id: string, Image?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', height?: number | null, name: string, url: string, width?: number | null } | null } | null } | null } | null> | null } | { __typename?: 'ComponentCommonHeader', id: string, Text?: string | null, ButtonText?: string | null, ButtonLink?: string | null } | { __typename?: 'ComponentCommonTwoColumnBlock', id: string, TitleText?: string | null, Description?: string | null, SubTitle?: string | null, SubDescription?: string | null, ImagePosition?: Types.Enum_Componentcommontwocolumnblock_Imageposition | null, ButtonText?: string | null, ButtonUrl?: string | null, Image?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', height?: number | null, name: string, url: string, width?: number | null } | null } | null } | null } | { __typename?: 'Error' } | null> | null } | null } | null } | null };
 
 
 export const HomePageDocument = gql`
@@ -17,12 +17,75 @@ export const HomePageDocument = gql`
         sections {
           ... on ComponentCommonHeader {
             id
+            Text
+            ButtonText
+            ButtonLink
           }
           ... on ComponentCommonCarousel {
             id
+            Item {
+              ButtonText
+              ButtonUrl
+              Description
+              Image {
+                data {
+                  id
+                  attributes {
+                    height
+                    name
+                    url
+                    width
+                  }
+                }
+              }
+              ImagePosition
+              SubDescription
+              SubTitle
+              TitleText
+              id
+            }
           }
           ... on ComponentCommonTwoColumnBlock {
             id
+            TitleText
+            Description
+            SubTitle
+            SubDescription
+            Image {
+              data {
+                id
+                attributes {
+                  height
+                  name
+                  url
+                  width
+                }
+              }
+            }
+            ImagePosition
+            ButtonText
+            ButtonUrl
+          }
+          ... on ComponentCommonTwoColumnBlock {
+            id
+            TitleText
+            Description
+            SubTitle
+            SubDescription
+            Image {
+              data {
+                id
+                attributes {
+                  height
+                  name
+                  url
+                  width
+                }
+              }
+            }
+            ImagePosition
+            ButtonText
+            ButtonUrl
           }
         }
       }

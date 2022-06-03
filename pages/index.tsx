@@ -12,10 +12,10 @@ import {
 } from "lib/apollo/cms-client";
 import type { GetStaticProps, NextPage } from "next";
 import Head from "next/head";
+import HomePageSections from "../components/HomePageSections"
 
 const Home: NextPage = () => {
   const { data } = useHomePageQuery();
-
   return (
     <>
       <Head>
@@ -34,8 +34,16 @@ const Home: NextPage = () => {
             to complete the challenge
           </Typography>
         </Box>
-
-        <Box>{/* TODO: Render components from useHomePageQury here  */}</Box>
+        <Box display="flex" flexDirection="column">
+          {/* TODO: Render components from useHomePageQury here  */}
+          {
+            data.homePage?.data?.attributes?.sections.map((section, index) => {
+              return (
+                <HomePageSections data={section} key={index}></HomePageSections>
+              );
+            })
+          }
+        </Box>
       </Container>
     </>
   );
