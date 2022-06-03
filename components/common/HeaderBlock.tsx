@@ -1,10 +1,18 @@
 import { ComponentCommonHeader } from "graphql/types";
+import Card from '@mui/material/Card'
+import Typography from '@mui/material/Typography'
+
 type Props = {
   data: ComponentCommonHeader;
 };
 const HeaderBlock = ({ data }: Props) => {
-  //TODO: Complete this component
-  return null;
+  return (
+    <Card>
+      <Typography>
+          <a href={data.ButtonLink}>{data.Text}</a>
+      </Typography>
+    </Card>
+  )
 };
 
 export default HeaderBlock;
