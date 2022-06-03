@@ -1,5 +1,6 @@
 // import { NextLink } from "components/common/NextLink";
 import { Box, Container, Typography } from "@mui/material";
+import HomePageSections from "components/HomePageSections";
 import {
   HomePageDocument,
   HomePageQuery,
@@ -14,7 +15,8 @@ import type { GetStaticProps, NextPage } from "next";
 import Head from "next/head";
 
 const Home: NextPage = () => {
-  const { data } = useHomePageQuery();
+  const { data } = useHomePageQuery(),
+   sections = data?.homePage?.data?.attributes?.sections;
 
   return (
     <>
@@ -35,7 +37,9 @@ const Home: NextPage = () => {
           </Typography>
         </Box>
 
-        <Box>{/* TODO: Render components from useHomePageQury here  */}</Box>
+        <Box> 
+          {sections?.map(section => <HomePageSections data={section} key={section.__typename} />)}     
+        </Box>
       </Container>
     </>
   );

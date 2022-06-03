@@ -6,15 +6,72 @@ query HomePage {
         sections {
           ... on ComponentCommonHeader {
             id
-            # TODO: Complete this query
+            ButtonLink
+            ButtonText
+            Text
           }
           ... on ComponentCommonCarousel {
             id
-            # TODO: Complete this query
+            Item {
+              id
+              ButtonText
+              ButtonUrl
+              Description
+              Image { 
+                data { 
+                  attributes { 
+                    alternativeText
+                    caption
+                    createdAt
+                    ext
+                    formats
+                    hash
+                    height
+                    mime
+                    name
+                    previewUrl
+                    provider
+                    provider_metadata
+                    size
+                    updatedAt
+                    url
+                    width
+                  } 
+                }
+              }
+              ImagePosition
+              TitleText
+            }
           }
           ... on ComponentCommonTwoColumnBlock {
             id
-            # TODO: Complete this query
+            ButtonText
+            ButtonUrl
+            Description
+            Image { 
+              data { 
+                attributes { 
+                  alternativeText
+                  caption
+                  createdAt
+                  ext
+                  formats
+                  hash
+                  height
+                  mime
+                  name
+                  previewUrl
+                  provider
+                  provider_metadata
+                  size
+                  updatedAt
+                  url
+                  width
+                } 
+              }
+            }
+            ImagePosition
+            TitleText
           }
         }
       }
