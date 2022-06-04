@@ -1,6 +1,10 @@
 import type { AppProps } from "next/app";
 import { createTheme, CssBaseline, ThemeProvider } from "@mui/material";
 import MyApolloProvider from "lib/apollo/ApolloProvider";
+
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+
 const theme = createTheme();
 function MyApp({ Component, pageProps }: AppProps) {
   return (

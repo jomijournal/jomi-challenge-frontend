@@ -24,7 +24,9 @@
     "**/*.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    "components/theme/theme.js"
+    "components/theme/theme.js",
+    "components/CarouselSection.ts",
+    "components/Container.js"
   ],
   "exclude": ["node_modules"]
 }

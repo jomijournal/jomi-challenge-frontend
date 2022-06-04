@@ -3,7 +3,7 @@ import React from "react";
 import TwoColumnBlock from "./common/TwoColumnBlock";
 import CarouselBlock from "./common/CarouselBlock";
 import HeaderBlock from "./common/HeaderBlock";
-import { Box, Divider } from "@mui/material";
+import { Container, Divider } from "@mui/material";
 
 type Unpacked<T> = T extends (infer U)[]
   ? U
@@ -19,12 +19,12 @@ type Props = {
 
 const Section = (child) => {
   return (
-    <Box sx={{ justifyContent: "center" }}>
+    <Container>
       <main>
         {child}
         <Divider sx={{ margin: "5%" }} />
       </main>
-    </Box>
+    </Container>
   );
 };
 

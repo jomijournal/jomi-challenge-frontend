@@ -12,7 +12,6 @@ import {
 } from "lib/apollo/cms-client";
 
 import type { GetStaticProps, NextPage } from "next";
-import Head from "next/head";
 import HomePageSections from "components/HomePageSections";
 
 const Home: NextPage = () => {
