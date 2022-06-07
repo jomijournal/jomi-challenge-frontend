@@ -1,5 +1,6 @@
 // import { NextLink } from "components/common/NextLink";
 import { Box, Container, Typography } from "@mui/material";
+import HomePageSections from "components/HomePageSections";
 import {
   HomePageDocument,
   HomePageQuery,
@@ -15,7 +16,6 @@ import Head from "next/head";
 
 const Home: NextPage = () => {
   const { data } = useHomePageQuery();
-
   return (
     <>
       <Head>
@@ -24,18 +24,13 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Container>
-        <Box my={2}>
-          <Typography variant="h4">Welcome to JOMI Code Challenge</Typography>
-          <Typography>
-            Please follow the instructions on
-            <a href="https://github.com/jomijournal/jomi-cms-challenge-backend">
-              https://github.com/jomijournal/jomi-cms-challenge-backend
-            </a>{" "}
-            to complete the challenge
-          </Typography>
+        <Box my={1}>
+          {
+            data.homePage.data.attributes.sections.map((section, i) => {
+              return <HomePageSections data={section} key={i} />
+            })
+          }
         </Box>
-
-        <Box>{/* TODO: Render components from useHomePageQury here  */}</Box>
       </Container>
     </>
   );
