@@ -6,15 +6,55 @@ query HomePage {
         sections {
           ... on ComponentCommonHeader {
             id
+            Text
+            ButtonLink
+            ButtonText
             # TODO: Complete this query
           }
           ... on ComponentCommonCarousel {
             id
-            # TODO: Complete this query
+            Item {
+              TitleText
+              Description
+              ButtonUrl
+              ButtonText
+              Image {
+                data {
+                  id
+                  attributes {
+                    hash
+                    mime
+                    name
+                    provider
+                    size
+                    url
+                  }
+                }
+              }
+              # TODO: Complete this query
+            }
           }
           ... on ComponentCommonTwoColumnBlock {
-            id
             # TODO: Complete this query
+            id
+            TitleText
+            Description
+            ButtonUrl
+            ButtonText
+            Image {
+              data {
+                id
+                attributes {
+                  hash
+                  mime
+                  name
+                  provider
+                  size
+                  url
+                }
+              }
+            }
+            ImagePosition
           }
         }
       }
