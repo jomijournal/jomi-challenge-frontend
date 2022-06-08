@@ -1,6 +1,10 @@
-import { HomePageQuery } from "graphql/cms/homepage.generated";
 import React from "react";
+
+import { HomePageQuery } from "graphql/cms/homepage.generated";
+
+import CarouselBlock from "./common/CarouselBlock";
 import TwoColumnBlock from "./common/TwoColumnBlock";
+import HeaderBlock from "./common/HeaderBlock";
 
 type Unpacked<T> = T extends (infer U)[]
   ? U
@@ -17,13 +21,13 @@ type Props = {
 const HomePageSections = ({ data }: Props) => {
   //TODO : Fix this component so that it can render other components
   switch (data.__typename) {
-    case "ComponentCommonCarousel":
-      return null;
     case "ComponentCommonHeader":
-      return null;
+      return <HeaderBlock data={data} />;
     case "ComponentCommonTwoColumnBlock":
+      return <TwoColumnBlock data={data} />;
+    case "ComponentCommonCarousel":
       //@ts-ignore
-      return <TwoColumnBlock {...data} />;
+      return <CarouselBlock data={data} />;
   }
 };
 

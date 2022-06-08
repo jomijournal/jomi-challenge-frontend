@@ -1,5 +1,9 @@
 // import { NextLink } from "components/common/NextLink";
+import type { GetStaticProps, NextPage } from "next";
+import Head from "next/head";
+
 import { Box, Container, Typography } from "@mui/material";
+
 import {
   HomePageDocument,
   HomePageQuery,
@@ -10,11 +14,20 @@ import {
   APOLLO_STRAPI_STATE_PROP_NAME,
   initializeStrapiApollo,
 } from "lib/apollo/cms-client";
-import type { GetStaticProps, NextPage } from "next";
-import Head from "next/head";
+
+import HomePageSections from "components/HomePageSections";
+
+import "react-multi-carousel/lib/styles.css";
 
 const Home: NextPage = () => {
   const { data } = useHomePageQuery();
+  const {
+    homePage: {
+      data: {
+        attributes: { sections },
+      },
+    },
+  } = data;
 
   return (
     <>
@@ -34,8 +47,11 @@ const Home: NextPage = () => {
             to complete the challenge
           </Typography>
         </Box>
-
-        <Box>{/* TODO: Render components from useHomePageQury here  */}</Box>
+        <Box>
+          {sections.map((section, index) => {
+            return <HomePageSections data={section} key={index} />;
+          })}
+        </Box>
       </Container>
     </>
   );
