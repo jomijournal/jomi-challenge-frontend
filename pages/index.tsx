@@ -1,5 +1,6 @@
 // import { NextLink } from "components/common/NextLink";
-import { Box, Container, Typography } from "@mui/material";
+import { Box, Container } from "@mui/material";
+import HomePageSections from "components/HomePageSections";
 import {
   HomePageDocument,
   HomePageQuery,
@@ -12,9 +13,11 @@ import {
 } from "lib/apollo/cms-client";
 import type { GetStaticProps, NextPage } from "next";
 import Head from "next/head";
+import "react-multi-carousel/lib/styles.css";
 
 const Home: NextPage = () => {
   const { data } = useHomePageQuery();
+  const { sections } = data?.homePage?.data?.attributes;
 
   return (
     <>
@@ -24,18 +27,13 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Container>
-        <Box my={2}>
-          <Typography variant="h4">Welcome to JOMI Code Challenge</Typography>
-          <Typography>
-            Please follow the instructions on
-            <a href="https://github.com/jomijournal/jomi-cms-challenge-backend">
-              https://github.com/jomijournal/jomi-cms-challenge-backend
-            </a>{" "}
-            to complete the challenge
-          </Typography>
+        <Box>
+          {sections.map((section, index) => (
+            <div key={index}>
+              <HomePageSections data={section} />
+            </div>
+          ))}
         </Box>
-
-        <Box>{/* TODO: Render components from useHomePageQury here  */}</Box>
       </Container>
     </>
   );
