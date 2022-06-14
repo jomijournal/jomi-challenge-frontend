@@ -10,25 +10,61 @@ export type HomePageQuery = { __typename?: 'Query', homePage?: { __typename?: 'H
 
 
 export const HomePageDocument = gql`
-    query HomePage {
-  homePage {
-    data {
-      attributes {
-        sections {
-          ... on ComponentCommonHeader {
-            id
-          }
-          ... on ComponentCommonCarousel {
-            id
-          }
-          ... on ComponentCommonTwoColumnBlock {
-            id
+  query HomePage {
+    homePage {
+      data {
+        attributes {
+          sections {
+            ... on ComponentCommonHeader {
+              id
+              Text
+              ButtonText
+              ButtonLink
+            }
+            ... on ComponentCommonCarousel {
+              id
+              Item {
+                ... on ComponentCommonTwoColumnBlock {
+                  id
+                  TitleText
+                  Description
+                  ButtonText
+                  ButtonUrl
+                  ImagePosition
+                  Image {
+                    data {
+                      id
+                      attributes {
+                        name
+                        url
+                      }
+                    }
+                  }
+                }
+              }
+            }
+            ... on ComponentCommonTwoColumnBlock {
+              id
+              TitleText
+              Description
+              ButtonText
+              ButtonUrl
+              ImagePosition
+              Image {
+                data {
+                  id
+                  attributes {
+                    name
+                    url
+                  }
+                }
+              }
+            }
           }
         }
       }
     }
   }
-}
     `;
 
 /**
