@@ -1,20 +1,54 @@
 # Write your query or mutation here
 query HomePage {
   homePage {
+    __typename,
     data {
+      __typename,
       attributes {
+        __typename,
         sections {
+          __typename,
           ... on ComponentCommonHeader {
-            id
-            # TODO: Complete this query
+            id,
+            Text
           }
           ... on ComponentCommonCarousel {
-            id
-            # TODO: Complete this query
+            id,
+            Item(sort: "TitleText" ){
+              TitleText,
+              Description,
+              ImagePosition,
+              Image {
+                __typename,
+                data {
+                  __typename,
+                  id,
+                  attributes {
+                    __typename,
+                    url
+                  } 
+                }
+              }
+            }
           }
           ... on ComponentCommonTwoColumnBlock {
-            id
-            # TODO: Complete this query
+            id,
+            TitleText,
+            Description,
+            ButtonText,
+            ButtonUrl,
+            ImagePosition,
+              Image{
+                __typename,
+                data{
+                  __typename,
+                  id,
+                  attributes {
+                    __typename,
+                    url
+                  } 
+                }
+              }
           }
         }
       }

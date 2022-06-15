@@ -9,6 +9,10 @@ const nextConfig = {
   images: {
     domains: ["localhost", process.env.STRAPI_CMS_URL],
   },
+  experimental: {
+    // Enables the styled-components SWC transform
+    styledComponents: true
+  },
   webpack(config) {
     config.module.rules.push({
       test: /\.svg$/,

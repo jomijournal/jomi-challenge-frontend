@@ -95,7 +95,7 @@ export type HomePage = {
   __typename?: 'HomePage';
   createdAt?: Maybe<Scalars['DateTime']>;
   publishedAt?: Maybe<Scalars['DateTime']>;
-  sections?: Maybe<Array<Maybe<HomePageSectionsDynamicZone>>>;
+  sections: Array<Maybe<HomePageSectionsDynamicZone>>;
   updatedAt?: Maybe<Scalars['DateTime']>;
 };
 
