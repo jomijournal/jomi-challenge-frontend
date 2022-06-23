@@ -17,12 +17,51 @@ export const HomePageDocument = gql`
         sections {
           ... on ComponentCommonHeader {
             id
+            Text
+            ButtonText
+            ButtonLink
           }
           ... on ComponentCommonCarousel {
             id
+            Item {
+                TitleText
+                id
+                Image {
+                  data {
+                    id
+                    attributes {
+                      url
+                      alternativeText
+                      height
+                      width
+                      size
+                      hash
+                      mime
+                      name
+                      provider
+                    }
+                  }
+                }
+              }
           }
           ... on ComponentCommonTwoColumnBlock {
             id
+              TitleText
+              Description
+              ButtonText
+              ImagePosition
+              ButtonUrl
+              Image {
+                data {
+                  attributes {
+                    url
+                    alternativeText
+                    height
+                    width
+                    size
+                  }
+                }
+              }
           }
         }
       }
