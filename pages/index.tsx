@@ -1,5 +1,6 @@
 // import { NextLink } from "components/common/NextLink";
-import { Box, Container, Typography } from "@mui/material";
+import { Box, Container, Divider, Stack } from "@mui/material";
+import HomePageSections from "components/HomePageSections";
 import {
   HomePageDocument,
   HomePageQuery,
@@ -12,9 +13,14 @@ import {
 } from "lib/apollo/cms-client";
 import type { GetStaticProps, NextPage } from "next";
 import Head from "next/head";
+import { useMemo } from "react";
 
 const Home: NextPage = () => {
   const { data } = useHomePageQuery();
+  const sections = useMemo(() => {
+    const extractedSections = data?.homePage?.data?.attributes?.sections || []
+    return extractedSections.filter(section => section.__typename !== 'Error') as unknown as Exclude<HomePageQuery['homePage']['data']['attributes']['sections'][number], ({ __typename?: 'Error' } | null)>[] // Exclude the errors
+  }, [data?.homePage?.data?.attributes?.sections])
 
   return (
     <>
@@ -24,18 +30,23 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Container>
-        <Box my={2}>
-          <Typography variant="h4">Welcome to JOMI Code Challenge</Typography>
-          <Typography>
-            Please follow the instructions on
-            <a href="https://github.com/jomijournal/jomi-cms-challenge-backend">
-              https://github.com/jomijournal/jomi-cms-challenge-backend
-            </a>{" "}
-            to complete the challenge
-          </Typography>
-        </Box>
-
-        <Box>{/* TODO: Render components from useHomePageQury here  */}</Box>
+        <Stack gap={2}>
+          {sections.map((section, index) => {
+            let shouldRenderDivider = false
+            if (section.__typename === 'ComponentCommonTwoColumnBlock') {
+              const nextSection = sections[index + 1]
+              if (nextSection && nextSection.__typename === 'ComponentCommonTwoColumnBlock') {
+                shouldRenderDivider = true
+              }
+            }
+            return (
+              <Box key={`${section.__typename}.${section.id}`}>
+                <HomePageSections data={section} />
+                {shouldRenderDivider ? <Divider /> : null}
+              </Box>
+            )
+          })}
+        </Stack>
       </Container>
     </>
   );
@@ -44,7 +55,7 @@ const Home: NextPage = () => {
 export default Home;
 
 export const getStaticProps: GetStaticProps = async () => {
-  const client = await initializeStrapiApollo();
+  const client = initializeStrapiApollo();
   await client.query<HomePageQuery>({
     query: HomePageDocument,
   });

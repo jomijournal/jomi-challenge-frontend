@@ -1,4 +1,5 @@
 # Write your query or mutation here
+# Write your query or mutation here
 query HomePage {
   homePage {
     data {
@@ -6,15 +7,51 @@ query HomePage {
         sections {
           ... on ComponentCommonHeader {
             id
-            # TODO: Complete this query
-          }
-          ... on ComponentCommonCarousel {
-            id
-            # TODO: Complete this query
+            Text
           }
           ... on ComponentCommonTwoColumnBlock {
             id
-            # TODO: Complete this query
+            TitleText
+            Description
+            ButtonText
+            ButtonUrl
+            ImagePosition
+            Image {
+              data {
+                attributes {
+                  name
+                  alternativeText
+                  width
+                  height
+                  url
+                  hash
+                  mime
+                  provider
+                  size
+                }
+              }
+            }
+          }
+          ... on ComponentCommonCarousel {
+            id
+            Item {
+              id
+              Image {
+                data {
+                  attributes {
+                    name
+                    alternativeText
+                    width
+                    height
+                    url
+                    hash
+                    mime
+                    provider
+                    size
+                  }
+                }
+              }
+            }
           }
         }
       }
