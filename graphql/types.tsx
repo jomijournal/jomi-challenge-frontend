@@ -29,8 +29,6 @@ export type ComponentCommonCarouselItemArgs = {
 
 export type ComponentCommonHeader = {
   __typename?: 'ComponentCommonHeader';
-  ButtonLink?: Maybe<Scalars['String']>;
-  ButtonText?: Maybe<Scalars['String']>;
   Text?: Maybe<Scalars['String']>;
   id: Scalars['ID'];
 };
@@ -40,7 +38,7 @@ export type ComponentCommonTwoColumnBlock = {
   ButtonText?: Maybe<Scalars['String']>;
   ButtonUrl?: Maybe<Scalars['String']>;
   Description?: Maybe<Scalars['String']>;
-  Image?: Maybe<UploadFileEntityResponse>;
+  Image: UploadFileEntityResponse;
   ImagePosition?: Maybe<Enum_Componentcommontwocolumnblock_Imageposition>;
   TitleText?: Maybe<Scalars['String']>;
   id: Scalars['ID'];
@@ -89,7 +87,46 @@ export type Error = {
   message?: Maybe<Scalars['String']>;
 };
 
-export type GenericMorph = ComponentCommonCarousel | ComponentCommonHeader | ComponentCommonTwoColumnBlock | ComponentHeroHeroSection | ContentPage | HomePage | I18NLocale | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser;
+export type GenericMorph = ComponentCommonCarousel | ComponentCommonHeader | ComponentCommonTwoColumnBlock | ComponentHeroHeroSection | ContentPage | Home | HomePage | I18NLocale | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser;
+
+export type Home = {
+  __typename?: 'Home';
+  Carousel?: Maybe<Array<Maybe<ComponentCommonCarousel>>>;
+  Header?: Maybe<ComponentCommonHeader>;
+  TwoBlockHeader?: Maybe<Scalars['String']>;
+  Twocolumnblock?: Maybe<Array<Maybe<ComponentCommonTwoColumnBlock>>>;
+  content?: Maybe<Scalars['String']>;
+  createdAt?: Maybe<Scalars['DateTime']>;
+  publishedAt?: Maybe<Scalars['DateTime']>;
+  updatedAt?: Maybe<Scalars['DateTime']>;
+};
+
+
+export type HomeCarouselArgs = {
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+export type HomeTwocolumnblockArgs = {
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+export type HomeEntity = {
+  __typename?: 'HomeEntity';
+  attributes?: Maybe<Home>;
+  id?: Maybe<Scalars['ID']>;
+};
+
+export type HomeEntityResponse = {
+  __typename?: 'HomeEntityResponse';
+  data?: Maybe<HomeEntity>;
+};
+
+export type HomeEntityResponseCollection = {
+  __typename?: 'HomeEntityResponseCollection';
+  data: Array<HomeEntity>;
+  meta: ResponseCollectionMeta;
+};
 
 export type HomePage = {
   __typename?: 'HomePage';
@@ -140,12 +177,14 @@ export type I18NLocaleEntityResponseCollection = {
 export type Mutation = {
   __typename?: 'Mutation';
   createContentPage?: Maybe<ContentPageEntityResponse>;
+  createHome?: Maybe<HomeEntityResponse>;
   createUploadFile?: Maybe<UploadFileEntityResponse>;
   /** Create a new role */
   createUsersPermissionsRole?: Maybe<UsersPermissionsCreateRolePayload>;
   /** Create a new user */
   createUsersPermissionsUser: UsersPermissionsUserEntityResponse;
   deleteContentPage?: Maybe<ContentPageEntityResponse>;
+  deleteHome?: Maybe<HomeEntityResponse>;
   deleteHomePage?: Maybe<HomePageEntityResponse>;
   deleteUploadFile?: Maybe<UploadFileEntityResponse>;
   /** Delete an existing role */
@@ -165,6 +204,7 @@ export type Mutation = {
   resetPassword?: Maybe<UsersPermissionsLoginPayload>;
   updateContentPage?: Maybe<ContentPageEntityResponse>;
   updateFileInfo: UploadFileEntityResponse;
+  updateHome?: Maybe<HomeEntityResponse>;
   updateHomePage?: Maybe<HomePageEntityResponse>;
   updateUploadFile?: Maybe<UploadFileEntityResponse>;
   /** Update an existing role */
@@ -176,6 +216,11 @@ export type Mutation = {
 
 
 export type MutationDeleteContentPageArgs = {
+  id: Scalars['ID'];
+};
+
+
+export type MutationDeleteHomeArgs = {
   id: Scalars['ID'];
 };
 
@@ -234,6 +279,11 @@ export type MutationUpdateFileInfoArgs = {
 };
 
 
+export type MutationUpdateHomeArgs = {
+  id: Scalars['ID'];
+};
+
+
 export type MutationUpdateUploadFileArgs = {
   id: Scalars['ID'];
 };
@@ -267,7 +317,9 @@ export type Query = {
   __typename?: 'Query';
   contentPage?: Maybe<ContentPageEntityResponse>;
   contentPages?: Maybe<ContentPageEntityResponseCollection>;
+  home?: Maybe<HomeEntityResponse>;
   homePage?: Maybe<HomePageEntityResponse>;
+  homes?: Maybe<HomeEntityResponseCollection>;
   i18NLocale?: Maybe<I18NLocaleEntityResponse>;
   i18NLocales?: Maybe<I18NLocaleEntityResponseCollection>;
   me?: Maybe<UsersPermissionsMe>;
@@ -286,6 +338,16 @@ export type QueryContentPageArgs = {
 
 
 export type QueryContentPagesArgs = {
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+export type QueryHomeArgs = {
+  id?: InputMaybe<Scalars['ID']>;
+};
+
+
+export type QueryHomesArgs = {
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 

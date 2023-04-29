@@ -6,7 +6,7 @@ const defaultOptions = {} as const;
 export type HomePageQueryVariables = Types.Exact<{ [key: string]: never; }>;
 
 
-export type HomePageQuery = { __typename?: 'Query', homePage?: { __typename?: 'HomePageEntityResponse', data?: { __typename?: 'HomePageEntity', attributes?: { __typename?: 'HomePage', sections?: Array<{ __typename?: 'ComponentCommonCarousel', id: string } | { __typename?: 'ComponentCommonHeader', id: string } | { __typename?: 'ComponentCommonTwoColumnBlock', id: string } | { __typename?: 'Error' } | null> | null } | null } | null } | null };
+export type HomePageQuery = { __typename?: 'Query', homePage?: { __typename?: 'HomePageEntityResponse', data?: { __typename?: 'HomePageEntity', attributes?: { __typename?: 'HomePage', sections?: Array<{ __typename?: 'ComponentCommonCarousel', id: string, Item?: Array<{ __typename?: 'ComponentCommonTwoColumnBlock', id: string, ButtonText?: string | null, ButtonUrl?: string | null, Description?: string | null, ImagePosition?: Types.Enum_Componentcommontwocolumnblock_Imageposition | null, TitleText?: string | null, Image: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', hash: string, url: string, previewUrl?: string | null } | null } | null } } | null> | null } | { __typename?: 'ComponentCommonHeader', id: string, Text?: string | null } | { __typename?: 'ComponentCommonTwoColumnBlock', id: string, ButtonText?: string | null, ButtonUrl?: string | null, Description?: string | null, ImagePosition?: Types.Enum_Componentcommontwocolumnblock_Imageposition | null, TitleText?: string | null, Image: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', hash: string, url: string, previewUrl?: string | null } | null } | null } } | { __typename?: 'Error' } | null> | null } | null } | null } | null };
 
 
 export const HomePageDocument = gql`
@@ -17,12 +17,46 @@ export const HomePageDocument = gql`
         sections {
           ... on ComponentCommonHeader {
             id
+            Text
           }
           ... on ComponentCommonCarousel {
             id
+            Item {
+              id
+              ButtonText
+              ButtonUrl
+              Description
+              Image {
+                data {
+                  id
+                  attributes {
+                    hash
+                    url
+                    previewUrl
+                  }
+                }
+              }
+              ImagePosition
+              TitleText
+            }
           }
           ... on ComponentCommonTwoColumnBlock {
             id
+            ButtonText
+            ButtonUrl
+            Description
+            Image {
+              data {
+                id
+                attributes {
+                  hash
+                  url
+                  previewUrl
+                }
+              }
+            }
+            ImagePosition
+            TitleText
           }
         }
       }
